@@ -1,19 +1,21 @@
-function getPostData(request) {
+import { IncomingMessage } from "http";
+
+function getPostData(request: IncomingMessage) {
   return new Promise((resolve, reject) => {
     try {
-      let requestBody = ''
+      let requestBody = "";
 
-      request.on('data', (chunk) => {
-        requestBody += chunk.toString()
-      })
+      request.on("data", (chunk) => {
+        requestBody += chunk.toString();
+      });
 
-      request.on('end', () => {
-        resolve(requestBody)
-      })
+      request.on("end", () => {
+        resolve(requestBody);
+      });
     } catch (error) {
-      reject(error)
+      reject(error);
     }
-  })
+  });
 }
 
 export { getPostData };
