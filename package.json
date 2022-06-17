@@ -17,7 +17,7 @@
     "test": "jest",
     "build": "npx tsc",
     "start:dev": "nodemon ./src/index.ts",
-    "start:prod": "npm run build && node ./dist/index.js"
+    "start:prod": "npm run build && node dist/index.js"
   },
   "author": "",
   "license": "ISC",
