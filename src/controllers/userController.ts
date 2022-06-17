@@ -33,7 +33,7 @@ async function getByID(
       response.end(JSON.stringify(user));
     } else {
       response.writeHead(HTTP_STATUS_CODES.NOT_FOUND, DEFAULT_HEADERS);
-      response.end(JSON.stringify({ message: "User Not Found" }));
+      response.end(HTTP_RESPONS_MESSAGES.USER_NOT_FOUND);
     }
   } catch (error) {
     console.log(error);
@@ -71,13 +71,13 @@ async function update(
         hobbies: hobbies || user.hobbies,
       };
 
-      const updUser = await userModel.update(id, userData);
+      const updatedUser = await userModel.update(id, userData);
 
       response.writeHead(HTTP_STATUS_CODES.OK, DEFAULT_HEADERS);
-      return response.end(JSON.stringify(updUser));
+      return response.end(JSON.stringify(updatedUser));
     } else {
       response.writeHead(HTTP_STATUS_CODES.NOT_FOUND, DEFAULT_HEADERS);
-      response.end(JSON.stringify({ message: "User Not Found" }));
+      response.end(HTTP_RESPONS_MESSAGES.USER_NOT_FOUND);
     }
   } catch (error) {
     console.log(error);
@@ -98,7 +98,7 @@ async function remove(
       response.end(JSON.stringify({ message: `User ${id} removed` }));
     } else {
       response.writeHead(HTTP_STATUS_CODES.NOT_FOUND, DEFAULT_HEADERS);
-      response.end(JSON.stringify({ message: "User Not Found" }));
+      response.end(HTTP_RESPONS_MESSAGES.USER_NOT_FOUND);
     }
   } catch (error) {
     console.log(error);

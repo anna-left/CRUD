@@ -1,5 +1,4 @@
 import { IncomingMessage, ServerResponse } from "http";
-import { Readable } from "stream";
 import * as userController from "./controllers/userController";
 
 import {
@@ -33,7 +32,7 @@ function router(request: IncomingMessage, response: ServerResponse) {
     userController.remove(request, response, id);
   } else {
     response.writeHead(HTTP_STATUS_CODES.NOT_FOUND, DEFAULT_HEADERS);
-    response.end(JSON.stringify({ message: "Route Not Found" }));
+    response.end(JSON.stringify({ message: "Invalid data in request"}));
   }
 }
 
