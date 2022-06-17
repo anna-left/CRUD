@@ -1,23 +1,22 @@
-
 import { createServer, RequestListener, Server } from "http";
-import 'dotenv/config';
+import "dotenv/config";
 
-// import { router } from "./router.js";
-// import {
-//   DEFAULT_HEADERS,
-//   HTTP_RESPONS_MESSAGES,
-//   HTTP_STATUS_CODES,
-// } from "./utils/constants.js";
+import { router } from "./router";
+import {
+  DEFAULT_HEADERS,
+  HTTP_RESPONS_MESSAGES,
+  HTTP_STATUS_CODES,
+} from "./utils/constants";
+import { IUser } from "./interfaces/interfaces";
 
-const usersDB = [{
-  "id": "ba64be9b-9d38-4261-b42f-db4d813e99a9",
-  "username": "Anna",
-  "age": 36,
-  "hobbies": [
-    "reading",
-    "travels"
-  ]
-}];
+const usersDB: IUser[] = [
+  {
+    id: "ba64be9b-9d38-4261-b42f-db4d813e99a9",
+    username: "anonymous",
+    age: 25,
+    hobbies: ["reading", "travels"],
+  },
+];
 
 export const app: Server = createServer(function (request, response) {
   try {

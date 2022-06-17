@@ -1,7 +1,7 @@
 interface IUserData {
   username: string;
   age: number;
-  hobbyes: string[];
+  hobbies: string[];
 }
 
 interface IUser extends IUserData {

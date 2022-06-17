@@ -1,7 +1,8 @@
-import { getPostData } from "../utils/getPostData.js";
-import * as userModel from "../models/userModel.js";
+import { getPostData } from "../utils/getPostData";
+import * as userModel from "../models/userModel";
 
-import { DEFAULT_HEADERS, HTTP_STATUS_CODES, HTTP_RESPONS_MESSAGES } from '../utils/constants.js';
+import { DEFAULT_HEADERS, HTTP_STATUS_CODES, HTTP_RESPONS_MESSAGES } from '../utils/constants';
+import { IUser, IUserData } from "../interfaces/interfaces";
 
 async function getAll(request, response) {
   try {
@@ -14,7 +15,7 @@ async function getAll(request, response) {
   }
 }
 
-async function getByID(request, response, id) {
+async function getByID(request, response, id: string) {
   try {
     const user = await userModel.findById(id)
 
@@ -35,7 +36,7 @@ async function create(request, response) {
 
   try {
     const body = await getPostData(request)
-    const { username, age, hobbies } = JSON.parse(body)
+    const { username, age, hobbies } = JSON.parse(body);
     const user = { username, age, hobbies };
     const newUser = await userModel.create(user)
 
@@ -49,9 +50,9 @@ async function create(request, response) {
 }
 
 
-async function update(request, response, id) {
+async function update(request, response, id: string) {
   try {
-    const user = await userModel.findById(id)
+    const user: IUserData = await userModel.findById(id) as IUserData;
 
     if (user) {
       const body = await getPostData(request)
@@ -76,7 +77,7 @@ async function update(request, response, id) {
   }
 }
 
-async function remove(request, response, id) {
+async function remove(request, response, id: string) {
 
   try {
     const user = await userModel.findById(id)
