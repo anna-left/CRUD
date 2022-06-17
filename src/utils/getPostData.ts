@@ -1,4 +1,5 @@
 import { IncomingMessage } from "http";
+import { IUser } from "../interfaces/interfaces";
 
 function getPostData(request: IncomingMessage) {
   return new Promise((resolve, reject) => {
@@ -10,7 +11,11 @@ function getPostData(request: IncomingMessage) {
       });
 
       request.on("end", () => {
-        resolve(requestBody);
+        try {
+          resolve(requestBody);
+        } catch (error) {
+          reject(error);
+        }
       });
     } catch (error) {
       reject(error);

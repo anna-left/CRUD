@@ -47,16 +47,27 @@ async function getByID(
 async function create(request: IncomingMessage, response: ServerResponse) {
   try {
     const body = await getPostData(request);
-    const { username, age, hobbies } = JSON.parse(body as string);
-    const user = { username, age, hobbies };
-
-    if (!username || !age || !hobbies) {
+    
+    try {
+      var userData: IUserData = JSON.parse(body as string);
+      if (!userData.username || !userData.age || !userData.hobbies) {
+        response.writeHead(HTTP_STATUS_CODES.BAD_REQUEST, DEFAULT_HEADERS);
+        return response.end(
+          HTTP_RESPONS_MESSAGES.REQUIRED_FIELDS_ARE_NOT_FILLED
+        );
+      }
+    } catch (error) {
       response.writeHead(HTTP_STATUS_CODES.BAD_REQUEST, DEFAULT_HEADERS);
       return response.end(HTTP_RESPONS_MESSAGES.REQUIRED_FIELDS_ARE_NOT_FILLED);
     }
-    const newUser = await userModel.create(user);
+    
 
-    response.writeHead(HTTP_STATUS_CODES.REQUEST_WAS_SUCCESSFUL, DEFAULT_HEADERS);
+    const newUser = await userModel.create(userData);
+
+    response.writeHead(
+      HTTP_STATUS_CODES.REQUEST_WAS_SUCCESSFUL,
+      DEFAULT_HEADERS
+    );
     return response.end(JSON.stringify(newUser));
   } catch (error) {
     console.log(error);
