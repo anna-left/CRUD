@@ -49,9 +49,14 @@ async function create(request: IncomingMessage, response: ServerResponse) {
     const body = await getPostData(request);
     const { username, age, hobbies } = JSON.parse(body as string);
     const user = { username, age, hobbies };
+
+    if (!username || !age || !hobbies) {
+      response.writeHead(HTTP_STATUS_CODES.BAD_REQUEST, DEFAULT_HEADERS);
+      return response.end(HTTP_RESPONS_MESSAGES.REQUIRED_FIELDS_ARE_NOT_FILLED);
+    }
     const newUser = await userModel.create(user);
 
-    response.writeHead(201, DEFAULT_HEADERS);
+    response.writeHead(HTTP_STATUS_CODES.REQUEST_WAS_SUCCESSFUL, DEFAULT_HEADERS);
     return response.end(JSON.stringify(newUser));
   } catch (error) {
     console.log(error);
