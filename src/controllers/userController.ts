@@ -1,6 +1,5 @@
 import { getPostData } from "../utils/getPostData";
 import * as userModel from "../models/userModel";
-
 import {
   DEFAULT_HEADERS,
   HTTP_STATUS_CODES,
@@ -8,8 +7,9 @@ import {
 } from "../utils/constants";
 import { IUserData } from "../interfaces/interfaces";
 import { IncomingMessage, ServerResponse } from "http";
+import { uuidValidate } from "../utils/uuidValidate";
 
-async function getAll(request: IncomingMessage, response: ServerResponse) {
+async function getAll(_: IncomingMessage, response: ServerResponse) {
   try {
     const users = await userModel.findAll();
 
@@ -21,11 +21,15 @@ async function getAll(request: IncomingMessage, response: ServerResponse) {
 }
 
 async function getByID(
-  request: IncomingMessage,
+  _: IncomingMessage,
   response: ServerResponse,
   id: string
 ) {
   try {
+    if (!uuidValidate(id)) {
+      response.writeHead(HTTP_STATUS_CODES.BAD_REQUEST, DEFAULT_HEADERS);
+      response.end(HTTP_RESPONS_MESSAGES.INVALID_UUID_FORMAT);
+    }
     const user = await userModel.findById(id);
 
     if (user) {

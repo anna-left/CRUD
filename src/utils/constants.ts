@@ -1,7 +1,8 @@
 const HTTP_STATUS_CODES = {
   OK: 200,
-  INTERNAL_SERVER_ERROR: 500,
+  BAD_REQUEST: 400,
   NOT_FOUND: 404,
+  INTERNAL_SERVER_ERROR: 500,
 };
 
 const DEFAULT_HEADERS = {
@@ -9,6 +10,7 @@ const DEFAULT_HEADERS = {
 };
 
 const HTTP_RESPONS_MESSAGES = {
+  INVALID_DATA: JSON.stringify({ message: "Invalid data in request" }),
   INTERNAL_SERVER_ERROR: JSON.stringify({ message: "Internal Server Error" }),
   INVALID_UUID_FORMAT: JSON.stringify({ message: "Invalid uuid format" }),
   USER_NOT_FOUND: JSON.stringify({ message: "User not found" }),
