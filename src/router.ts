@@ -8,6 +8,7 @@ import {
 } from "./utils/constants";
 
 function router(request: IncomingMessage, response: ServerResponse) {
+  // console.log(`process id ${process.pid}`);
   if (request.url === "/api/users" && request.method === "GET") {
     userController.getAll(request, response);
   } else if (
