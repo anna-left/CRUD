@@ -18,7 +18,7 @@ const usersDB: IUser[] = [
   },
 ];
 
-export const app: Server = createServer(function (request, response) {
+export const server: Server = createServer(function (request, response) {
   try {
     router(request, response);
   } catch (err) {

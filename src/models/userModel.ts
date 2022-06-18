@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 
-import { usersDB } from "../app";
+import { usersDB } from "../server";
 import { IUser, IUserData } from "../interfaces/interfaces";
 
 function findAll() {
