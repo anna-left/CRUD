@@ -9,14 +9,7 @@ import {
 } from "./utils/constants";
 import { IUser } from "./interfaces/interfaces";
 
-const usersDB: IUser[] = [
-  {
-    id: "ba64be9b-9d38-4261-b42f-db4d813e99a9",
-    username: "anonymous",
-    age: 25,
-    hobbies: ["reading", "travels"],
-  },
-];
+const usersDB: IUser[] = [];
 
 export const server: Server = createServer(function (request, response) {
   try {
