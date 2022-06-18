@@ -15,6 +15,7 @@ const HTTP_RESPONS_MESSAGES = {
   INTERNAL_SERVER_ERROR: JSON.stringify({ message: "Internal Server Error" }),
   INVALID_UUID_FORMAT: JSON.stringify({ message: "Invalid uuid format" }),
   USER_NOT_FOUND: JSON.stringify({ message: "User not found" }),
+  INCORRECT_FIELDS: JSON.stringify({ message: "Incorrect data" }),
   REQUIRED_FIELDS_ARE_NOT_FILLED: JSON.stringify({
     message: "Required fields are not filled",
   }),

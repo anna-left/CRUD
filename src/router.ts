@@ -31,7 +31,7 @@ function router(request: IncomingMessage, response: ServerResponse) {
     const id = request.url.split("/")[3];
     userController.remove(request, response, id);
   } else {
-    response.writeHead(HTTP_STATUS_CODES.BAD_REQUEST, DEFAULT_HEADERS);
+    response.writeHead(HTTP_STATUS_CODES.NOT_FOUND, DEFAULT_HEADERS);
     response.end(HTTP_RESPONS_MESSAGES.INVALID_DATA);
   }
 }
