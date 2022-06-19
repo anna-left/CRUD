@@ -2,11 +2,23 @@
 
 Simple CRUD API using in-memory database underneath
 
-## Install dependecies
+## Installation
 
-Install the dependencies
+  `git clone https://github.com/anna-left/CRUD.git`
 
-    npm install
+  `cd crud`
+
+  `git checkout develop`
+
+  `npm install`
+
+## Description
+
+To test all functions CRUD API you need to use
+
+  - Postman - HTTP client that tests HTTP requests;
+
+  - Command line to run the application locally using npm scripts.
 
 ## NPM scripts
 
@@ -20,40 +32,60 @@ Run the application
 
   `npm run start:prod`
 
+- in multi mode
+
+  `npm run start:multi`
+
 Run e2e tests
 
-    `npm test`
+  `npm test`
 
 ## REST API
 
-Endpoints
+Users are stored as objects that have following properties:
+
+  `id — unique identifier (string, uuid) generated on server side`
+
+  `username — user's name (string, required)`
+
+  `age — user's age (number, required)`
+
+  `hobbies — user's hobbies (array of strings or empty array, required)`
+
+## Endpoints
 
 ### Get all Users
 
-`GET /user`
+`GET /users`
 
-- returns all persons
+- is used to get all persons
 
 ### Get one user
 
-`GET /user/:id`
+`GET /users/:id`
 
-- returns user with specified id
+- is used to get one user with specified id
 
 ### Create new user
 
-`POST /user`
+`POST /users`
 
-- reates new user
+- is used to create record about new user and store it in database
 
 ### Update user
 
-`PUT /user/:id`
+`PUT /users/:id`
 
-- updates user with specified id
+- updates only user-specified fields, other fields remain unchanged
 
 ### Delete user
 
 `DELETE /user/:id`
 
-- deletes user with specified id
+- is used to delete existing user from database
+
+## Author
+
+Anna Rybakova(@anna-left)
+
+https://t.me/AnnaFavor
