@@ -9,6 +9,11 @@ import {
 
 function router(request: IncomingMessage, response: ServerResponse) {
   // console.log(`process id ${process.pid}`);
+  // let i = 0;
+  // while (i < 10000000000) {
+  //   i++;
+  // }
+    
   if (request.url === "/api/users" && request.method === "GET") {
     userController.getAll(request, response);
   } else if (

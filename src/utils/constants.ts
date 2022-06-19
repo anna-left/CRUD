@@ -10,6 +10,7 @@ const HTTP_STATUS_CODES = {
 const DEFAULT_HEADERS = {
   "Content-Type": "application/json",
 };
+const LOCAL_HOST_IP = "127.0.0.1";
 
 const HTTP_RESPONS_MESSAGES = {
   INVALID_DATA: JSON.stringify({ message: "Invalid data in request" }),
@@ -22,4 +23,4 @@ const HTTP_RESPONS_MESSAGES = {
   }),
 };
 
-export { HTTP_STATUS_CODES, DEFAULT_HEADERS, HTTP_RESPONS_MESSAGES };
+export { HTTP_STATUS_CODES, DEFAULT_HEADERS, HTTP_RESPONS_MESSAGES, LOCAL_HOST_IP };
