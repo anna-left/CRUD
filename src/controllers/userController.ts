@@ -145,8 +145,8 @@ async function remove(
 
     if (user) {
       await userModel.remove(id);
-      response.writeHead(HTTP_STATUS_CODES.OK, DEFAULT_HEADERS);
-      return response.end(JSON.stringify({ message: `User ${id} removed` }));
+      response.writeHead(HTTP_STATUS_CODES.NO_CONTENT, DEFAULT_HEADERS);
+      response.end();
     } else {
       response.writeHead(HTTP_STATUS_CODES.NOT_FOUND, DEFAULT_HEADERS);
       return response.end(HTTP_RESPONS_MESSAGES.USER_NOT_FOUND);
